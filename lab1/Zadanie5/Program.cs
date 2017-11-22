@@ -10,6 +10,14 @@ namespace Zadanie5
     {
         static void Main(string[] args)
         {
+            String a;
+            a = Console.ReadLine();
+            a = "Начало";
+            String b;
+            b = Console.ReadLine();
+            b = "Конец";
+            Console.WriteLine(b+a);
+            
         }
     }
 }

@@ -1,0 +1,1035 @@
+<!DOCTYPE html>  <html>  <head>  <meta charset="utf-8"/>  <title>14 Объекты</title>  <style>
+.check_single {
+    margin:15px;
+	border:1px solid black;
+	padding:5px;
+    width:calc(100% - 40px);
+}
+sqrt val {
+	border-top: 1px solid black;
+}
+sqrt:before {
+	content:"\221A";
+}
+.section {
+	counter-reset:section;
+}
+.section h3:after {
+	counter-increment:section;
+	content: " " counter(section);
+}
+table {
+	border-collapse:collapse;
+}
+.check_values {
+	width:100%;
+	counter-reset:test_case;
+}
+.check_values td:first-child::before {
+	counter-increment:test_case;
+	content: counter(test_case);
+}
+table td, table th {
+	border:1px solid black;
+	text-align:center;
+}
+.check_values td:first-child{
+	width:40px;
+}
+.lab_nav ol {
+	list-style:none;
+}
+.nav {
+	position:fixed;
+	top:0px;
+	right:0px;
+	margin:15px;
+	clear:both;
+}
+.nav ul{
+	list-style-type:none;
+	padding:0px;
+	float:left;
+}
+.nav li {
+	margin:2px;
+	border:1px solid black;
+}
+.nav li a {
+	display:block;
+	padding:7px;
+}
+.task_block {
+	width:80%;
+	page-break-inside:avoid;
+	padding:10px;
+	display:block;
+}
+.task_block:target{
+	background-color:lightgrey;
+}
+.task_block:target .task_id{
+	color:white;
+}
+.task_id {
+	float:right;
+	color:lightgrey;
+}
+.quiz_block {
+	width:80%;
+}
+.quiz_block:target{
+	background-color:lightgrey;
+}
+.task_desc {
+	margin:5px;
+}
+.example_image {
+	width:200px;
+}
+.lab_nav {
+	width:80%;
+	overflow:auto;
+}
+.check_values .preformatted, .preformatted {
+	font-family:monospace;
+	white-space:pre;
+	text-align:left;
+	padding:10px;
+}
+formula {
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+}
+fraction {
+	display:inline-block;
+	text-align:center;
+	vertical-align:middle;
+	font-weight:bold;
+}
+numerator {
+	display:block;
+	border-bottom:2px solid black;
+}
+denominator {
+	display:block;
+}
+.example::after{
+	content:"*";
+}
+.supervision::after{
+	content:"!";
+}
+spoiler {
+	color:darkgrey;
+}
+spoiler origin {
+	display:none;
+}
+spoiler:hover origin {
+	display:inline;
+}
+spoiler trans {
+	display:inline;
+}
+spoiler:hover trans {
+	display:none;
+}
+.comment{
+	color:darkgrey;
+}
+.step{
+	display:none;
+}
+.step:last-child, .step:target{
+	display:block;
+}
+.step:target ~ .step:last-child{
+	display:none;
+}
+.console{
+	background-color:black;
+	color:white;
+	width:300px;
+}
+zoom{
+	background-color:gray;
+	font-size:40pt;
+}
+@media print {
+	.nav {
+		display:none;
+	}
+	.lab_nav {
+		display:none;
+	}
+	ol li {
+		margin-bottom:30px;
+	}
+	.quiz_block {
+		width:100%;
+	}
+	.hide_on_print .check_values, .hide_on_print .check_single{
+		display:none;
+	}
+	.hide_on_print img{
+		display:none;
+	}
+	.empty_on_print td{
+		color:transparent;
+	}
+	.empty_on_print img{
+		visibility:hidden;
+	}
+}</style>  </head>  <body class="section">  <a name="heading"><h1>Объекты</h1></a>
+<div class="lab_nav">
+	Другие темы:
+	<ol>
+		<li>1. <a href="[1] лаб. ОСАЛП.html">Ввод и вывод информации</a></li>
+		<li>2. <a href="[2] лаб. ОСАЛП.html">Арифметические операторы и методы</a></li>
+		<li>5. <a href="[5] лаб. ОСАЛП.html">Условия</a></li>
+		<li>6. <a href="[6] лаб. ОСАЛП.html">Циклы</a></li>
+		<li>7. <a href="[7] лаб. ОСАЛП.html">Строки</a></li>
+		<li>8. <a href="[8] лаб. ОСАЛП.html">Массивы</a></li>
+		<li>12. <a href="[12] лаб. ОСАЛП.html">Функции</a></li>
+		<li>13. <a href="[13] лаб. ОСАЛП.html">Исключения</a></li>
+		<li>14. <a href="[14] лаб. ОСАЛП.html">Объекты</a></li>
+		<li>16. <a href="[16] лаб. ОСАЛП.html">HTTP клиент</a></li>
+	</ol>
+</div><div class="nav">  <ul>  <li><a href="#heading">^</a></li>  <li><a href="#task8403" class="example">№ 1</a></li>  <li><a href="#task3185" class="supervision">№ 2</a></li>  <li><a href="#task9914">№ 3</a></li>  <li><a href="#task2809" class="supervision">№ 4</a></li>  <li><a href="#task7297">№ 5</a></li>  <li><a href="#task5242">№ 6</a></li>  <li><a href="#task1379">№ 7</a></li>  <li><a href="#task2401">№ 8</a></li>  <li><a href="#task5421">№ 9</a></li>  <li><a href="#task9713">№ 10</a></li>  <li><a href="#task7301" class="example">№ 11</a></li>  <li><a href="#task2000">№ 12</a></li>  <li><a href="#task4147">№ 13</a></li>  <li><a href="#task1953">№ 14</a></li>  <li><a href="#task3956">№ 15</a></li>  </ul>  </div>
+<div class="task_block" id="task8403">
+	<div class="task_id">8403</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Инициализировать объект p так, чтобы при выполнении данного сценария на экран был выведен указанный результат c точностью 0.0001.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p.x = 0;
+p.y = 0;
+var dist = p.distanceTo(4,3);
+console.log(dist);</td>
+            <td>5.0</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p.x = 0;
+p.y = 0;
+console.log(p.distanceTo(0,0));</td>
+            <td>0.0</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p.x = 19;
+p.y = 23;
+console.log(p.distanceTo(11,13));</td>
+            <td>12.8062</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p.x = 11;
+p.y = 23;
+console.log(p.distanceTo(11,13));</td>
+            <td>10.0</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task3185">
+	<div class="task_id">3185</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Инициализировать объекты p1 и p2 так, чтобы при выполнении данных сценарев на экран был выведен указанный результат c точностью 0.0001.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.x = 0;
+p1.y = 0;
+p2.x = 4;
+p2.y = 3;
+var dist = p1.distanceTo(p2);
+console.log(dist);</td>
+            <td>5.0</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.x = 0;
+p1.y = 0;
+p2.x = 0;
+p2.y = 0;
+console.log(p1.distanceTo(p2));</td>
+            <td>0.0</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.x = 19;
+p1.y = 23;
+p2.x = 11;
+p2.y = 13;
+console.log(p1.distanceTo(p2));</td>
+            <td>12.8062</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.x = 11;
+p1.y = 23;
+p2.x = 11;
+p2.y = 13;
+console.log(p1.distanceTo(p2));</td>
+            <td>10.0</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.x = 11;
+p1.y = 23;
+p2 = null;
+try {
+    console.log(p1.distanceTo(p2));
+} catch (ex){
+    console.log(ex.message);
+}</td>
+            <td>Конечная точка не инициализирована</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.x = 31;
+p1.y = 37;
+var p2;
+try {
+    console.log(p1.distanceTo(p2));
+} catch (ex){
+    console.log(ex.message);
+}</td>
+            <td>Конечная точка не инициализирована</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task9914">
+	<div class="task_id">9914</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Инициализировать объекты l и r так, чтобы при выполнении данных сценарев на экран был выведен указанный результат c точностью 0.0001.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">l.a = 2;
+l.b = 3;
+r.a = 5;
+r.b = 7;
+var fact = l.intersects(r);
+console.log(fact);</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">l.a = 11;
+l.b = 17;
+r.a = 13;
+r.b = 19;
+console.log(r.intersects(l));</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">l.a = 5;
+l.b = 15;
+r.a = 0;
+r.b = 30;
+console.log(l.intersects(r));</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">l.a = 67;
+l.b = 71;
+r.a = 59;
+r.b = 61;
+console.log(l.intersects(r));</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">l.a = 79;
+l.b = 73;
+r.a = 83;
+r.b = 89;
+try {
+    console.log(l.intersects(r));
+} catch(ex){
+    console.log(ex.message);
+}</td>
+            <td>Некорректный интервал</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">l.a = 97;
+l.b = 101;
+r.a = 107;
+r.b = 103;
+try {
+    console.log(l.intersects(r));
+} catch(ex){
+    console.log(ex.message);
+}</td>
+            <td>Некорректный интервал</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">l.a = 127;
+l.b = 131;
+r = null;
+try {
+    console.log(l.intersects(r));
+} catch(ex){
+    console.log(ex.message);
+}</td>
+            <td>Данный интервал не инициализирован</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task2809">
+	<div class="task_id">2809</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Инициализировать объект p так, чтобы при выполнении данных сценариев на экран был выведен указанный результат с точностью 0.0001</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p.x = 127;
+p.y = 113;
+var str = p.print();
+console.log(str);</td>
+            <td>(127;113)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p.x = 31;
+p.y = 37;
+console.log(p.print());</td>
+            <td>(31;37)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p.setCoordinates(5,7);
+console.log(p.print());</td>
+            <td>(5;7)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.setCoordinates(23,29);
+console.log("Distance between " + p1.print()
++ " to (0;0) is " + p1.distanceTo(0,0));</td>
+            <td>Distance between (23;29) to (0;0) is 37.0135</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.setCoordinates(11,13);
+p2.x = 17;
+p2.y = 19;
+console.log("Distance between " + p1.print()
++ " and " + p2.print() + " is " + p1.distanceTo(p2));</td>
+            <td>Distance between (11;13) and (17;19) is 8.4852</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task7297">
+	<div class="task_id">7297</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Инициализировать объекты l и range так, чтобы при выполнении данных сценарев на экран был выведен указанный результат c точностью 0.0001.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">l.a = 11;
+l.b = 17;
+console.log(l.contains(0));
+console.log(l.contains(15));
+console.log(l.contains(20));</td>
+            <td class="preformatted">false
+true
+false</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">range.a = 19;
+range.b = 17;
+try {
+    console.log(range.contains(18));
+} catch(ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Некорректный интервал</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task5242">
+	<div class="task_id">5242</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Инициализировать объект range так, чтобы при выполнении данных сценарев на экран был выведен указанный результат c точностью 0.0001.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Выражение</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">range.a = 23;
+range.b = 29;
+console.log(range.print());</td>
+            <td>[23;29]</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">range.a = 31;
+range.b = 29;
+try {
+    console.log(range.print());
+} catch(ex){
+    console.log(ex.message);
+}</td>
+            <td>Некорректный интервал</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task1379">
+	<div class="task_id">1379</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Инициализировать объект range так, чтобы при выполнении данных сценарев на экран был выведен указанный результат c точностью 0.0001.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">range.a = 5;
+range.b = 11;
+range.slide(7);
+console.log("Интервал успешно изменен");
+console.log(range.print());</td>
+            <td class="preformatted">Интервал успешно изменен
+[12;18]</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">range.a = 17;
+range.b = 29;
+range.slide(-4);
+console.log("Интервал успешно изменен");
+console.log(range.print());</td>
+            <td class="preformatted">Интервал успешно изменен
+[13;25]</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">range.a = 37;
+range.b = 31;
+try {
+    range.slide(2);
+    console.log("Интервал успешно изменен");
+    console.log(range.print());
+} catch(ex){
+    console.log(ex.message);
+}</td>
+            <td>Некорректный интервал</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task2401">
+	<div class="task_id">2401</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Дополнить класс Interval так, чтобы при выполнении данных сценарев на экран был выведен указанный результат c точностью 0.0001.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">range.a = 31;
+range.b = 37;
+try {
+    range.squeeze(2);
+    console.log("Интервал успешно изменен");
+    console.log(range.print());
+} catch(ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Интервал успешно изменен
+[31;35]</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">range.a = 41;
+range.b = 43;
+try {
+    range.squeeze(19);
+    console.log("Интервал успешно изменен");
+    console.log(range.print());
+} catch(ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Невозможно уменьшить интервал
+на указанную длину</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">range.a = 101;
+range.b = 67;
+try {
+    range.squeeze(23);
+    console.log("Интервал успешно изменен");
+    console.log(range.print());
+} catch(ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Некорректный интервал</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task5421">
+	<div class="task_id">5421</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Инициализировать объекты так, чтобы при выполнении данных сценариев на экран был выведен указанный результат.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p.x = 31;
+p.y = 37;
+console.log(p.print());</td>
+            <td>(31;37)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p.setCoordinates(5,7);
+console.log(p.print());</td>
+            <td>(5;7)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.setCoordinates(23,29);
+console.log("Distance between " + p1.print()
+    + " to (0;0) is " + p1.distanceTo(0,0));</td>
+            <td>Distance between (23;29) to (0;0) is 37.0135</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">p1.setCoordinates(11,13);
+p2.x = 17;
+p2.y = 19;
+console.log("Distance between " + p1.print()
+    + " and " + p2.print() + " is " + p1.distanceTo(p2));</td>
+            <td>Distance between (11;13) and (17;19) is 8.4852</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task9713">
+	<div class="task_id">9713</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Инициализировать объекты так, чтобы при выполнении данных сценариев на экран был выведен указанный результат.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер по порядку</th>
+            <th>Сценарий</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">range.a = 829;
+range.b = 857;
+console.log(range.print());</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">range.a = 593;
+range.b = 607;
+console.log(range.print());</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">left.a = 0;
+left.b = 15;
+right.a = 10;
+right.b = 20;
+var result;
+if (left.intersects(right))
+{
+	result = "пересекается";
+}
+else
+{
+	result = "не пересекается";
+}
+console.log("Интервал " + left + " " + result + " с интервалом " + right);</td>
+			<td class="preformatted">Интервал [0;15] пересекается с интервалом [10;20]</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">left.a = 100;
+left.b = 200;
+right.a = 400;
+right.b = 300;
+var result;
+if (left.intersects(right))
+{
+	result = "пересекается";
+}
+else
+{
+	result = "не пересекается";
+}
+console.log("Интервал " + left + " " + result + " с интервалом " + right);</td>
+			<td class="preformatted">Интервал [100;200] не пересекается с интервалом [Некорректный интервал 400;300]</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task7301">
+	<div class="task_id">7301</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Реализовать код так, чтобы при выполнении данных сценариев на экран был выведен указанный результат.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">var p = new Point(53, 59);
+console.log(p.print());</td>
+            <td>(53;59)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">var p1 = new Point(53, 59);
+var p2 = new Point(61,67);
+console.log("Distance between " + p1.print()
+    + " and " + p2.print() + " is " + p1.distanceTo(p2));</td>
+            <td>Distance between (53;59) and (61;67) is 11.3137</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">var dist = new Point(79, 83)
+    .distanceTo(new Point(89, 97));
+console.log(dist);</td>
+            <td>8.4853</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">var p = new Point(71, 73);
+console.log("Distance between " + p.print()
+    + " to zero is " + p.distanceTo(new Point(0, 0)));</td>
+            <td>Distance between (71;73) to zero is 101.8332</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">console.log(new Point(79, 83)
+    .distanceTo(new Point(89, 97)));</td>
+            <td>17.2047</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">var dist = distanceBetween(
+    new Point(151, 157),
+    new Point(163, 167));
+console.log(dist);</td>
+            <td>15.6204</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">console.log(distanceBetween(
+    new Point(173, 179),
+    new Point(181, 191)));</td>
+            <td>14.4222</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task2000">
+	<div class="task_id">2000</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Реализовать код так, чтобы при выполнении данных сценарев на экран был выведен указанный результат c точностью 0.0001.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">try {
+    var range = new Interval(23,29);
+    console.log("Интервал инициализирован");
+    console.log(range.print());
+} catch (ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Интервал инициализирован
+[23;29]</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">try {
+    var range = new Interval(41,29);
+    console.log("Интервал инициализирован");
+    console.log(range.print());
+} catch (ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Некорректный интервал</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">try {
+    var range = new Interval(5, 11);
+    console.log("Интервал инициализирован");
+    range.slide(7);
+    console.log("Интервал успешно изменен");
+    console.log(range.print());
+} catch (ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Интервал инициализирован
+Интервал успешно изменен
+[12;18]</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">try {
+    var range = new Interval(41,29);
+    console.log("Интервал инициализирован");
+    range.slide(20);
+    console.log("Интервал успешно изменен");
+    console.log(range.print());
+} catch (ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Некорректный интервал</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">try {
+    var range = new Interval(211,223);
+    range.squeeze(23);
+    console.log("Интервал успешно изменен");
+    console.log(range.print());
+} catch (ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Невозможно уменьшить интервал
+на указанную длину</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">try {
+    var range = new Interval(13,151);
+    range.squeeze(41);
+    console.log("Интервал успешно изменен");
+    console.log(range.print());
+} catch (ex){
+    console.log(ex.message);
+}</td>
+            <td class="preformatted">Интервал успешно изменен
+[13;110]</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">try {
+    var range = new Interval(13, 151);
+    console.log("Длина интервала: " + range.getLength());
+    range.squeeze(41);
+    console.log("Интервал успешно изменен");
+    console.log("Длина интервала: " + range.getLength());
+    console.log(range.print());
+} catch (ex) {
+    console.log(ex.Message);
+}</td>
+            <td class="preformatted">Длина интервала: 138
+Интервал успешно изменен
+Длина интервала: 97
+[13;110]</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task4147">
+	<div class="task_id">4147</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Реализовать код так, чтобы при выполнении данных сценариев на экран был выведен указанный результат с точностью 0.0001.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер по порядку</th>
+			<th>Сценарий</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var r = new Rectangle(5,5,20,20);
+var p = new Point(30,30);
+console.log(r.contains(p));</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var corner = new Point(10,10);
+var r = new Rectangle(corner,20,20);
+var p = new Point(30,30);
+console.log(r.contains(p));</td>
+			<td>true</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var corner = new Point(10,10);
+var r = new Rectangle(corner,20,20);
+console.log(r.getArea());</td>
+			<td>400</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var projectionX = new Interval(15, 30);
+var projectionY = new Interval(20, 35);
+var r = new Rectangle(projectionX, projectionY);
+console.log(r.getArea());</td>
+			<td>225</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var r = new Rectangle(100, 200, 300, 400);
+var i = new Interval(50, 75);
+console.log(r.getProjectionX().intersects(i));</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var r = new Rectangle(100, 200, 300, 400);
+var i = new Interval(100, 300);
+console.log(r.getProjectionY().intersects(i));</td>
+			<td>true</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task1953">
+	<div class="task_id">1953</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Реализовать код так, чтобы при выполнении данных сценариев на экран был выведен указанный результат с точностью 0.0001.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер по порядку</th>
+			<th>Сценарий</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var c = new Circle(40, 50, 13);
+console.log(c.getArea());</td>
+			<td class="preformatted">530.9292
+[27;53]
+[37;63]</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var p = new Point(100, 120);
+var c = new Circle(p, 17);
+console.log(c.getProjectionX().print());
+console.log(c.getProjectionY().print());</td>
+			<td class="preformatted">[83;117]
+[103;137]</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var p = new Point(100, 120);
+var c = new Circle(p, 34, 50);
+console.log(c.getProjectionX().print());
+console.log(c.getProjectionY().print());</td>
+			<td class="preformatted">[83;117]
+[103;137]</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">var p = new Point(100, 120);
+var c = new Circle(p, 70, 50);
+console.log(c.getArea());</td>
+			<td class="preformatted">1963.4954</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task3956">
+    <div class="task_id">3956</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Реализовать класс Shape так, чтобы при выполнении данного сценария на экран был выведен указанный результат с точностью 0.0001.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Сценарий</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">var s1 = new Rectangle(0,0,20,20);
+console.log(s1.getCenter().print());
+var s2 = new Circle(100,100,15);
+console.log(s2.getCenter().print());
+console.log(s1.getCenter().Equals(s2.getCenter()));</td>
+            <td class="preformatted">(10;10)
+(100;100)
+false</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">var s1 = new Rectangle(0,0,20,20);
+console.log(s1.getCenter().print());
+var s2 = new Circle(100,100,15);
+console.log(s2.getCenter().print());
+s1.Slide(90,0);            
+console.log(s1.getCenter().print());
+s2.Slide(0,-90);           
+console.log(s2.getCenter().print());
+console.log(s1.getCenter().Equals(s2.getCenter()));</td>
+            <td class="preformatted">(10;10)
+(100;100)
+(100;10)
+(100;10)
+true</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">var arr = [
+    new Rectangle(0,0,20,20),
+    new Circle(100,100,15),
+    new Rectangle(13,17,19,23),
+    new Circle(73,79,83)
+];
+var areaSum = 0;
+for (int i = 0; i &lt; arr.length; i++){
+    areaSum += arr[i].getArea();
+}
+console.log(areaSum);</td>
+            <td class="preformatted">23186.2901</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">var r = new Rectangle(0, 0, 10, 10, "blue", "red", 5);
+var c = new Circle(50, 50, 40, "green", "yellow", 4);
+console.log(r);
+console.log(c);</td>
+            <td class="preformatted">&lt;rect x='0' y='0' width='10' height='10'
+  stroke='blue' stroke-width='5' fill='red'/&gt;
+&lt;circle cx='50' cy='50' r='40'
+  stroke='green' stroke-width='4' fill='yellow'/&gt;</td>
+        </tr>
+    </table>
+</div></body>  </html>
